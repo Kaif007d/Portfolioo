@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Mohammed Kaif M</title>
+
+  <!-- Typography matching the reference: Modern Sans + Luxury Serif Italic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --bg: #f8faff;
+      --card-bg: #ffffff;
+      --card-border: #e2e8f5;
+      --card-hover-border: #0056d6;
+      --primary-blue: #0056d6;
+      --deep-blue: #0b1f44;
+      --text-muted: #5a6e8c;
+      --pill-bg: #eef4ff;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-italic: 'Instrument Serif', serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+      color: var(--deep-blue);
+      font-family: var(--font-body);
+    }
+
+    body {
+      overflow-x: hidden;
+      line-height: 1.6;
+      /* Soft Tech Grid matching reference graphic */
+      background-color: #f8faff;
+      background-image: 
+        radial-gradient(circle at 100% 0%, rgba(0, 86, 214, 0.08) 0%, transparent 40%),
+        linear-gradient(to right, rgba(0, 86, 214, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 86, 214, 0.04) 1px, transparent 1px);
+      background-size: 100% 100%, 48px 48px, 48px 48px;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* Top Floating Navigation */
+    nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 48px);
+      max-width: 1140px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--card-border);
+      border-radius: 100px;
+      z-index: 1000;
+      padding: 12px 28px;
+      box-shadow: 0 10px 25px rgba(0, 86, 214, 0.05);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-decoration: none;
+      color: var(--primary-blue);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--deep-blue);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-blue);
+    }
+
+    /* Hero Layout */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 130px;
+      padding-bottom: 70px;
+    }
+
+    .hero-wrap {
+      max-width: 900px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 5.2vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--deep-blue);
+      margin-bottom: 24px;
+      white-space: nowrap;
+    }
+
+    .hero-title .accent-serif {
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--primary-blue);
+      letter-spacing: 0;
+      margin-left: 10px;
+    }
+
+    .summary-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 4px solid var(--primary-blue);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 30px;
+      box-shadow: 0 15px 35px rgba(0, 86, 214, 0.05);
+    }
+
+    .summary-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary-blue);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .summary-text {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--deep-blue);
+      font-weight: 600;
+    }
+
+    /* Contact Links */
+    .contact-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .contact-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 22px;
+      border-radius: 100px;
+      border: 1px solid var(--card-border);
+      background: #ffffff;
+      color: var(--primary-blue);
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(0, 86, 214, 0.06);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .contact-pill i {
+      width: 16px;
+      height: 16px;
+      stroke-width: 2.3;
+    }
+
+    .contact-pill:hover {
+      background: var(--primary-blue);
+      color: #ffffff;
+      border-color: var(--primary-blue);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 86, 214, 0.2);
+    }
+
+    /* Sections */
+    section {
+      padding: 95px 0;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .section-title {
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--deep-blue);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .section-title span.accent-serif {
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--primary-blue);
+      font-size: 2.3rem;
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--card-border);
+    }
+
+    /* Grids & Cards */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 24px;
+    }
+
+    .site-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 34px 28px;
+      box-shadow: 0 10px 30px rgba(0, 86, 214, 0.04);
+      transition: all 0.35s ease;
+    }
+
+    .site-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--card-hover-border);
+      box-shadow: 0 18px 40px rgba(0, 86, 214, 0.1);
+    }
+
+    .company-bold {
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--primary-blue);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .role-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .card-bullets {
+      list-style: none;
+    }
+
+    .card-bullets li {
+      font-size: 0.94rem;
+      color: var(--deep-blue);
+      font-weight: 600;
+      line-height: 1.65;
+      margin-bottom: 12px;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .card-bullets li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--primary-blue);
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    /* Skills Pill Containers */
+    .skills-block-wrap {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .skills-block-title {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--primary-blue);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .pill-rack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 100px;
+      background: var(--pill-bg);
+      border: 1px solid #d4e3fc;
+      color: var(--primary-blue);
+    }
+
+    /* Uniform Skills Rows */
+    .skill-stripe {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px 30px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 16px;
+      box-shadow: 0 6px 20px rgba(0, 86, 214, 0.03);
+      transition: all 0.3s ease;
+    }
+
+    .skill-stripe:hover {
+      border-color: var(--card-hover-border);
+      transform: translateX(4px);
+    }
+
+    .skill-stripe-name {
+      font-weight: 800;
+      font-size: 0.92rem;
+      letter-spacing: 0.5px;
+      color: var(--primary-blue);
+      min-width: 220px;
+      text-transform: uppercase;
+    }
+
+    /* Footer */
+    footer {
+      padding: 50px 0;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      border-top: 1px solid var(--card-border);
+    }
+
+    @media (max-width: 850px) {
+      .hero-title {
+        white-space: normal;
+      }
+      .nav-links {
+        display: none;
+      }
+      .skill-stripe {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Floating Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">PORTFOLIO</a>
+      <ul class="nav-links">
+        <li><a href="#internships">Internships</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="container hero">
+    <div class="hero-wrap">
+      <h1 class="hero-title">MOHAMMED KAIF M <span class="accent-serif">Portfolio.</span></h1>
+
+      <div class="summary-card">
+        <span class="summary-title">
+          <i data-lucide="sparkles" style="width: 15px; height: 15px;"></i> SUMMARY
+        </span>
+        <p class="summary-text">
+          Electronics and Communication Engineering graduate with hands-on experience in C programming, Python, SQL and Embedded Systems. Completed internships in Embedded Systems, Web development and Substation Automation. Passionate about software, IoT development, and firmware programming. Seeking for an entry-level job.
+        </p>
+      </div>
+
+      <div class="contact-pills">
+        <a href="https://www.linkedin.com/in/mohammed-kaif-m/" target="_blank" rel="noopener noreferrer" class="contact-pill">
+          <i data-lucide="linkedin"></i> LinkedIn
+        </a>
+        <a href="https://www.instagram.com/md.kaiff__" target="_blank" rel="noopener noreferrer" class="contact-pill">
+          <i data-lucide="instagram"></i> Instagram
+        </a>
+        <a href="mailto:kaif007d@gmail.com" class="contact-pill">
+          <i data-lucide="mail"></i> kaif007d@gmail.com
+        </a>
+        <a href="tel:9500955506" class="contact-pill">
+          <i data-lucide="phone"></i> 9500955506
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Internships Section -->
+  <section id="internships">
+    <div class="container">
+      <h2 class="section-title">Internships <span class="accent-serif">Experience.</span></h2>
+
+      <div class="grid-3">
+        <div class="site-card">
+          <span class="company-bold">TechUC Automations</span>
+          <span class="role-title">Embedded Systems and IoT Intern</span>
+          <ul class="card-bullets">
+            <li>Worked with microcontrollers, sensors, and basic interfacing.</li>
+            <li>Developed simple IoT-based applications using Arduino and ESP32.</li>
+            <li>Performed embedded C programming for GPIO and device control.</li>
+            <li>Gained hands-on experience in real-time system development.</li>
+          </ul>
+        </div>
+
+        <div class="site-card">
+          <span class="company-bold">GK Power Expertise Pvt Ltd</span>
+          <span class="role-title">SCADA Intern</span>
+          <ul class="card-bullets">
+            <li>Learned Substation Automation System (SAS) and SCADA concepts.</li>
+            <li>Learned about IEC61850 communication protocols.</li>
+            <li>Basic understanding of IED, BCU, relays, switches, PRP/HSR networking.</li>
+            <li>Assisted in SCADA panel checking, troubleshooting, and commissioning activities.</li>
+            <li>Gained knowledge in Modbus, TCP/IP, and substation equipment.</li>
+          </ul>
+        </div>
+
+        <div class="site-card">
+          <span class="company-bold">Cybercodes</span>
+          <span class="role-title">Web Development Intern</span>
+          <ul class="card-bullets">
+            <li>Developed and maintained responsive web pages using HTML, CSS, and basic JavaScript.</li>
+            <li>Implemented user-friendly and responsive UI components for web applications.</li>
+            <li>Integrated frontend components with basic backend functionality.</li>
+            <li>Debugged and tested web pages to improve functionality and user experience.</li>
+            <li>Collaborated with the development team to understand requirements and complete assigned tasks.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects <span class="accent-serif">Engineering.</span></h2>
+
+      <div class="grid-2">
+        <div class="site-card">
+          <span class="company-bold">Generative AI-Based Smart Energy Meter</span>
+          <span class="role-title">Smart Metering & Telemetry</span>
+          <ul class="card-bullets">
+            <li>Developed an AI-assisted smart energy meter using ESP32 and solar power integration.</li>
+            <li>Implemented automatic switching between grid power and solar battery using predefined thresholds.</li>
+            <li>Integrated Blynk IoT for remote monitoring and manual control.</li>
+            <li>Used Generative AI to analyze battery health and provide maintenance suggestions.</li>
+          </ul>
+          <div class="skills-block-wrap">
+            <span class="skills-block-title">Skills Learned:</span>
+            <div class="pill-rack">
+              <span class="pill">Generative AI</span>
+              <span class="pill">Python</span>
+              <span class="pill">C Programming</span>
+              <span class="pill">Internet of Things (Blynk)</span>
+              <span class="pill">Embedded Systems</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="site-card">
+          <span class="company-bold">IoT-Based Smart Agriculture System</span>
+          <span class="role-title">Automated Irrigation</span>
+          <ul class="card-bullets">
+            <li>Developed an automated irrigation system using ESP32 and sensors.</li>
+            <li>Monitored real-time soil moisture and temperature using Blynk platform.</li>
+            <li>Automated water supply based on sensor data.</li>
+            <li>Improved efficiency of water usage through smart control.</li>
+          </ul>
+          <div class="skills-block-wrap">
+            <span class="skills-block-title">Skills Learned:</span>
+            <div class="pill-rack">
+              <span class="pill">Embedded Systems</span>
+              <span class="pill">Internet of Things (Blynk)</span>
+              <span class="pill">C Programming</span>
+              <span class="pill">Sensors & Interfacing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Technical <span class="accent-serif">Skills.</span></h2>
+
+      <div class="skill-stripe">
+        <div class="skill-stripe-name">Languages & Systems</div>
+        <div class="pill-rack">
+          <span class="pill">Python</span>
+          <span class="pill">C Programming</span>
+          <span class="pill">Embedded C</span>
+          <span class="pill">SQL / MySQL</span>
+          <span class="pill">HTML / CSS / JS</span>
+          <span class="pill">Embedded Systems</span>
+          <span class="pill">Internet of Things (IoT)</span>
+        </div>
+      </div>
+
+      <div class="skill-stripe">
+        <div class="skill-stripe-name">Protocols & Automation</div>
+        <div class="pill-rack">
+          <span class="pill">SCADA (SAS)</span>
+          <span class="pill">IEC 61850</span>
+          <span class="pill">Modbus</span>
+          <span class="pill">TCP/IP</span>
+          <span class="pill">PRP / HSR Networking</span>
+          <span class="pill">IEDs & BCUs</span>
+          <span class="pill">Protective Relays & Switches</span>
+        </div>
+      </div>
+
+      <div class="skill-stripe">
+        <div class="skill-stripe-name">Hardware & Tools</div>
+        <div class="pill-rack">
+          <span class="pill">ESP32</span>
+          <span class="pill">Arduino</span>
+          <span class="pill">Sensors</span>
+          <span class="pill">Visual Studio Code</span>
+          <span class="pill">GitHub</span>
+        </div>
+      </div>
+
+      <div class="skill-stripe">
+        <div class="skill-stripe-name">Spoken Languages</div>
+        <div class="pill-rack">
+          <span class="pill">English (Fluent)</span>
+          <span class="pill">Tamil (Native)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education">
+    <div class="container">
+      <h2 class="section-title">Academic <span class="accent-serif">Education.</span></h2>
+
+      <div class="grid-2">
+        <div class="site-card">
+          <span class="company-bold">SNS College of Technology, Coimbatore</span>
+          <span class="role-title">B.E. Electronics and Communication Engineering</span>
+          <p style="color: var(--primary-blue); font-weight: 700; font-size: 0.95rem;">
+            2022 – 2026 | CGPA: 7.66
+          </p>
+        </div>
+
+        <div class="site-card">
+          <span class="company-bold">Vidhya Vikashni Matric Higher Secondary School, Tiruppur</span>
+          <span class="role-title">Higher Secondary Education</span>
+          <p style="color: var(--primary-blue); font-weight: 700; font-size: 0.95rem;">
+            2022 | Percentage: 72%
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="certifications">
+    <div class="container">
+      <h2 class="section-title">Honors & <span class="accent-serif">Certifications.</span></h2>
+
+      <div class="grid-2">
+        <div class="site-card">
+          <span class="company-bold">Microsoft Certified</span>
+          <p style="color: var(--deep-blue); font-weight: 600; font-size: 0.94rem; margin-top: 4px;">
+            Azure AI Fundamentals (AI-900)
+          </p>
+        </div>
+
+        <div class="site-card">
+          <span class="company-bold">National Level Symposium - Paper Presentation</span>
+          <p style="color: var(--deep-blue); font-weight: 600; font-size: 0.94rem; margin-top: 4px;">
+            Secured 1st Prize — Erode Sengunthar Engineering College
+          </p>
+        </div>
+
+        <div class="site-card">
+          <span class="company-bold">Python Certification</span>
+          <p style="color: var(--deep-blue); font-weight: 600; font-size: 0.94rem; margin-top: 4px;">
+            Completed Python Certification — Kaggle Platform
+          </p>
+        </div>
+
+        <div class="site-card">
+          <span class="company-bold">Project Management Workshop</span>
+          <p style="color: var(--deep-blue); font-weight: 600; font-size: 0.94rem; margin-top: 4px;">
+            Government College of Technology, Coimbatore
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      MOHAMMED KAIF M • TIRUPPUR, TAMIL NADU
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
